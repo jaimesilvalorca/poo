@@ -1,6 +1,10 @@
+
 class Comuna():
-    def __init__(self, listaComunas = [],identificaComuna=0,descripcionComuna=''):
-        self.__listaComunas = listaComunas
+
+    __listaComunas = []
+
+    def __init__(self,identificaComuna=0,descripcionComuna=''):
+
         self.__identificaComuna = identificaComuna
         self.__descripcionComuna = descripcionComuna
 

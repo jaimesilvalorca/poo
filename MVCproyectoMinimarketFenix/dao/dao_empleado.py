@@ -4,9 +4,28 @@ import traceback
 class daoEmpleado:
     def __init__(self):
         try:
-            self.conn = conn.Conex("localhost", "root", "", "mydb")
+            self.conn = conn.Conex("localhost", "root", "", "poo3")
         except Exception as ex:
             print(ex)
 
     def getConex(self):
         return self.conn
+
+    print(conn)
+
+
+    def validarLogin(self,resultado):
+        sql = "select CORREO from empleado where CORREO = %s and CLAVE = %s"
+        resultado = None
+        c = self.getConex()
+        print(c)
+        try:
+            cursor = c.getConex().cursor()
+            cursor.execute(sql, (resultado.correoEmpleado, resultado.claveEmpleado))
+            resultado = cursor.fetchone()
+        except Exception as ex:
+            print(traceback.print_exc())
+        finally:
+            if c.getConex().is_connected():
+                c.closeConex()
+        return resultado

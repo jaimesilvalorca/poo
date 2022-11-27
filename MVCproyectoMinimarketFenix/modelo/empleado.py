@@ -1,8 +1,8 @@
-from cargo import Cargo
-from comuna import Comuna
+from modelo.cargo import Cargo
+from modelo.comuna import Comuna
 
 class Empleado:
-    def __init__(self, runEmpleado, nombreEmpleado, apellidoEmpleado, cargo, direccionEmpleado, claveEmpleado, correoEmpleado, comuna):
+    def __init__(self, runEmpleado ='', nombreEmpleado='', apellidoEmpleado='', cargo='', direccionEmpleado='', claveEmpleado='', correoEmpleado='', comuna=''):
 
         self.__runEmpleado = runEmpleado
         self.__nombreEmpleado = nombreEmpleado
@@ -25,7 +25,7 @@ class Empleado:
     def setApellidoEmpleado(self, apellidoEmpleado):
         self.__apellidoEmpleado = apellidoEmpleado
 
-    def setCargo(self, cargo = Cargo('','','')):
+    def setCargo(self, cargo = Cargo('','')):
         self.__cargo = cargo
 
     def setDireccionEmpleado(self, direccionEmpleado):
@@ -37,7 +37,7 @@ class Empleado:
     def setCorreoEmpleado(self, correoEmpleado):
         self.__correoEmpleado = correoEmpleado
 
-    def setComuna(self, comuna = Comuna('','','')):
+    def setComuna(self, comuna = Comuna('','')):
         self.__comuna = comuna
 
     def getRutEmpleado(self):
@@ -63,8 +63,3 @@ class Empleado:
 
     def getComuna(self):
         return self.__comuna
-
-    #Validar Login
-
-    def validarLogin(self, correoEmpleado, claveEmpleado):
-        return (self.getCorreoEmpleado() == correoEmpleado and self.getClaveEmpleado() == claveEmpleado)

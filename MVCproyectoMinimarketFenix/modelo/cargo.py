@@ -1,6 +1,8 @@
 class Cargo():
-    def __init__(self, listaCargos = [], identificaCargo=0, descripcionCargo=''):
-        self.__listaCargos = listaCargos
+
+    __listaCargos = []
+
+    def __init__(self,identificaCargo=0, descripcionCargo=''):
         self.__identificaCargo = identificaCargo
         self.__descripcionCargo = descripcionCargo
 

@@ -9,6 +9,8 @@ class Conex:
                                              passwd=passwd, \
                                              database=database)
 
+                    
+
         except Exception as ex:
             print(ex)
             self.__myconn.rollback()
@@ -20,3 +22,4 @@ class Conex:
     def getConex(self):
         return self.__myconn
 
+print(Conex("localhost", "root", "", "POO3"))
