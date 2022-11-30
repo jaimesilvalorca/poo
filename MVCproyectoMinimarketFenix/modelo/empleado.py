@@ -14,7 +14,7 @@ class Empleado:
         self.__comuna = comuna
         
     def __str__(self):
-        return f'Rut:{self.__runEmpleado} \nNombre: {self.__nombreEmpleado} \nApellido: {self.__apellidoEmpleado} \nCargo: {self.__cargo} \nDirección: {self.__direccionEmpleado} \nCorreo: {self.__correoEmpleado} \nComuna: {self.__comuna}'
+        return f'Rut:{self.__runEmpleado} \nNombre: {self.__nombreEmpleado} \nApellido: {self.__apellidoEmpleado} \nCargo: {self.__cargo} \nDirección: {self.__direccionEmpleado} \nCorreo: {self.__correoEmpleado} \nComuna: {self.__comuna} \nclave:{self.__claveEmpleado} '
 
     def setRutEmpleado(self, runEmpleado):
         self.__runEmpleado = runEmpleado

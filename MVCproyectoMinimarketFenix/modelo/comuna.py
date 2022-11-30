@@ -9,7 +9,7 @@ class Comuna():
         self.__descripcionComuna = descripcionComuna
 
     def __str__(self):
-        return f'Comunas:{self.__listaComunas} \nIdentificador comuna: {self.__identificaComuna} \nDescripcion Comuna: {self.__descripcionComuna}'        
+        return f'\nIdentificador comuna: {self.__identificaComuna} \nDescripcion Comuna: {self.__descripcionComuna}'        
 
     def setListaComunas(self, listaComunas):
         self.__listaComunas = listaComunas
@@ -28,3 +28,11 @@ class Comuna():
 
     def getDescripcionComuna(self):
         return self.__descripcionComuna
+
+    def addComuna(self, comuna):
+        self.__listaComunas.append(comuna)
+
+
+
+
+

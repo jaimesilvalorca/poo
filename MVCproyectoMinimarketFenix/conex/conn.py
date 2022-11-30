@@ -21,5 +21,3 @@ class Conex:
 
     def getConex(self):
         return self.__myconn
-
-print(Conex("localhost", "root", "", "POO3"))

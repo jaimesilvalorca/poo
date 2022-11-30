@@ -26,3 +26,6 @@ class Cargo():
 
     def getDescripcionCargo(self):
         return self.__descripcionCargo
+
+    def addCargo(self, cargo):
+        self.__listaCargos.append(cargo)

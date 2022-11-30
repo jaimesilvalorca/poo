@@ -13,15 +13,14 @@ class daoEmpleado:
 
     print(conn)
 
-
     def validarLogin(self,resultado):
-        sql = "select CORREO from empleado where CORREO = %s and CLAVE = %s"
-        resultado = None
+        sql = "select CORREO,CLAVE from empleado where CORREO = %s and CLAVE = %s"
         c = self.getConex()
-        print(c)
+        #print(c)
         try:
             cursor = c.getConex().cursor()
-            cursor.execute(sql, (resultado.correoEmpleado, resultado.claveEmpleado))
+            cursor.execute(sql, (resultado.getCorreoEmpleado(), resultado.getClaveEmpleado()))
+
             resultado = cursor.fetchone()
         except Exception as ex:
             print(traceback.print_exc())
@@ -29,3 +28,5 @@ class daoEmpleado:
             if c.getConex().is_connected():
                 c.closeConex()
         return resultado
+
+    
