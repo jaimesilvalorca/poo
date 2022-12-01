@@ -16,7 +16,6 @@ class daoEmpleado:
     def validarLogin(self,resultado):
         sql = "select CORREO,CLAVE from empleado where CORREO = %s and CLAVE = %s"
         c = self.getConex()
-        #print(c)
         try:
             cursor = c.getConex().cursor()
             cursor.execute(sql, (resultado.getCorreoEmpleado(), resultado.getClaveEmpleado()))

@@ -3,23 +3,20 @@ from dao.dao_comuna import daoComuna
 
 class ComunaDTO:
 
-    def agregarComuna(self, identificaComuna, descripcionComuna, comuna):
+    def agregarComuna(self, identificaComuna, descripcionComuna):
         daocomuna = daoComuna()
-        ciudad = Comuna(identificaComuna=identificaComuna, descripcionComuna=descripcionComuna)
-        comuna.addComuna(ciudad)       
+        ciudad = Comuna(identificaComuna=identificaComuna, descripcionComuna=descripcionComuna)      
         resultado = daocomuna.agregarComuna(ciudad)
         return resultado
         
-    
     def listarComunas(self):
         daocomuna = daoComuna()
         resultado = daocomuna.listarComuna()
-        lista = [] 
+        __listaComunas = [] 
         if resultado is not None:
-            for c in resultado:
-                """ print(c) """                
-                lista.append(Comuna(identificaComuna=c[0], descripcionComuna=c[1]))  
-        return lista
+            for c in resultado:          
+                __listaComunas.append(Comuna(identificaComuna=c[0], descripcionComuna=c[1]))  
+        return __listaComunas
     
     def buscarComuna(self, identificaComuna):
         daocomuna = daoComuna()

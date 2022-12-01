@@ -13,33 +13,35 @@ def validarLogin():
     resultado = EmpleadoDTO().validarLogin(correoEmpleado, claveEmpleado)
     return resultado
 
-def validateAddComuna(comuna):
-    """numeroComuna = input("Ingrese numero de comuna : ")
+def validateAddComuna():
+    numeroComuna = input("Ingrese numero de comuna : ")
     if len(numeroComuna) == 0:
-        print("Debe ingresar un nombre de usuario")
-        return validateAddUser()
-    resu = ComunaDTO().buscarUsuario(numeroComuna)
+        print("Debe ingresar un nombre de Comuna")
+        return validateAddComuna()
+    resu = ComunaDTO().buscarComuna(numeroComuna)
     if resu is not None:
         print("Datos existentes--> ", resu)
-    else:"""
-    numeroComuna = input("Ingrese numero de comuna: ") #crear función para validar email
-    descripcionComuna = input("Ingrese comuna: ") 
-    print(ComunaDTO().agregarComuna(numeroComuna, descripcionComuna, comuna))
+        numeroComuna = input("Ingrese numero de comuna: ") #crear función para validar email
+        descripcionComuna = input("Ingrese comuna: ") 
+        print(ComunaDTO().agregarComuna(numeroComuna, descripcionComuna))
+    else:
+        print("Usuario no encontrado")
 
-def validateAddCargo(cargo=0):
-    """numeroCargo = input("Ingrese numero de cargo : ")
+def validateAddCargo():
+    numeroCargo = input("Ingrese numero de cargo : ")
     if len(numeroCargo) == 0:
-        print("Debe ingresar un nombre de usuario")
-        return validateAddUser()
-    resu = CargoDTO().buscarUsuario(numeroCargo)
+        print("Debe ingresar un nombre de Cargo")
+        return validateAddCargo()
+    resu = CargoDTO().buscarCargo(numeroCargo)
     if resu is not None:
         print("Datos existentes--> ", resu)
-    else:"""
-    numeroCargo = input("Ingrese numero de cargo: ") #crear función para validar email
-    descripcionCargo = input("Ingrese cargo: ") 
-    print(CargoDTO().agregarCargo(numeroCargo, descripcionCargo, cargo))
+        numeroCargo = input("Ingrese numero de cargo: ") #crear función para validar email
+        descripcionCargo = input("Ingrese cargo: ") 
+        print(CargoDTO().agregarCargo(numeroCargo, descripcionCargo))
+    else:
+        print("Usuario encontrado")
     
-def listAll():
+def listAllComunas():
     print("\n")
     print("Listado de Comunas")
     resultado = ComunaDTO().listarComunas()
@@ -49,10 +51,20 @@ def listAll():
     else:
         print("no hay resultados")
 
+def listAllCargos():
+    print("\n")
+    print("Listado de Cargos")
+    resultado = CargoDTO().listarCargos()
+    if len(resultado) > 0:
+        for u in resultado:
+            print(u)
+    else:
+        print("no hay resultados")
+
 def validateFindComuna():
-    numeroComuna = input("Ingrese el nombre de usuario a buscar : ")
+    numeroComuna = input("Ingrese el numero de comuna a buscar: ")
     if numeroComuna == "":
-        print("Nombre de usuario incorrecto")
+        print("Numero de comuna incorreto")
         return validateFindComuna()
     else:
         resu = ComunaDTO().buscarComuna(numeroComuna)
@@ -61,27 +73,59 @@ def validateFindComuna():
         else:
             print("Usuario No encontrado")
 
+def validateFindCargo():
+    numeroCargo = input("Ingrese el numero de Cargo a buscar: ")
+    if numeroCargo == "":
+        print("Numero de Cargo incorreto")
+        return validateFindCargo()
+    else:
+        resu = CargoDTO().buscarCargo(numeroCargo)
+        if resu is not None:
+            print(f"Resultado : {resu}")
+        else:
+            print("Usuario No encontrado")
+
 def validateUpdateComuna():
-    numeroComuna = input("Ingrese el nombre de usuario a modificar : ")
+    numeroComuna = input("Ingrese el numero de comuna para modificar : ")
     if len(numeroComuna) == 0:
-        print("Debe ingresar un nombre de usuario")
+        print("Debe ingresar una comuna valida")
         return validateUpdateComuna() 
     resu = ComunaDTO().buscarComuna(numeroComuna)
     if resu is not None:
-        print("Datos --> ", resu)
-        nuevoNombre = input("Ingrese clave : ") #crear funci+on para valida clave
+        print("Comuna: ", resu)
+        nuevoNombre = input("Ingrese el nuevo nombre:  ")
         print(ComunaDTO().actualizarComuna(numeroComuna,nuevoNombre))
 
+def validateUpdateCargo():
+    numeroCargo = input("Ingrese el numero de Cargo para modificar : ")
+    if len(numeroCargo) == 0:
+        print("Debe ingresar una Cargo valida")
+        return validateUpdateCargo() 
+    resu = CargoDTO().buscarCargo(numeroCargo)
+    if resu is not None:
+        print("Cargo: ", resu)
+        nuevoNombre = input("Ingrese el nuevo nombre:  ")
+        print(CargoDTO().actualizarCargo(numeroCargo,nuevoNombre))
+
 def validateDeleteComuna():
-    numeroComuna = input("Ingrese el nombre de usuario a modificar : ")
+    numeroComuna = input("Ingrese el numero de la comuna que va eliminar: ")
     if len(numeroComuna) == 0:
-        print("Debe ingresar un nombre de usuario")
+        print("Debe ingresar una comuna valida")
         return validateDeleteComuna() 
     resu = ComunaDTO().buscarComuna(numeroComuna)
     if resu is not None:
-        print("Datos --> ", resu)
+        print("comuna: ", resu)
         print(ComunaDTO().eliminarComuna(numeroComuna))
 
+def validateDeleteCargo():
+    numeroCargo = input("Ingrese el numero de la Cargo que va eliminar: ")
+    if len(numeroCargo) == 0:
+        print("Debe ingresar una Cargo valida")
+        return validateDeleteCargo() 
+    resu = CargoDTO().buscarCargo(numeroCargo)
+    if resu is not None:
+        print("Cargo: ", resu)
+        print(CargoDTO().eliminarCargo(numeroCargo))
 
 def menu():
     
@@ -115,7 +159,7 @@ def crudComunas():
 
 ### para llegar al menu primero hay que loguearse
 
-def inicial(comuna=0, cargo=0):
+def inicial():
 
     while True:
         opc = menu()
@@ -125,30 +169,30 @@ def inicial(comuna=0, cargo=0):
             while True:
                 opc = crudCargos()
                 if opc == 1:
-                    validateAddCargo(cargo)
+                    validateAddCargo()
                 elif opc == 2:
-                    pass
+                    validateUpdateCargo()
                 elif opc == 3:
-                    pass   
+                    validateDeleteCargo()   
                 elif opc == 4:
-                    pass 
+                    listAllCargos()
                 elif opc == 5:
-                    menu() 
+                    break 
                 elif opc == 6:
                     break
         elif opc == 3:
             while True:
                 opc = crudComunas()
                 if opc == 1:
-                    validateAddComuna(comuna)
+                    validateAddComuna()
                 elif opc == 2:
                     validateUpdateComuna()
                 elif opc == 3:
                     validateDeleteComuna()   
                 elif opc == 4:
-                    listAll()
+                    listAllComunas()
                 elif opc == 5:
-                    menu() 
+                    break
                 elif opc == 6:
                     break
         elif opc == 4:

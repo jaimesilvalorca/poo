@@ -38,7 +38,7 @@ class daoComuna:
         result = None
         try:
             cursor = c.getConex().cursor()
-            cursor.execute("select IDCOMUNA,NUMEROCOMUNA, NOMBRECOMUNA from comuna")
+            cursor.execute("select NUMEROCOMUNA, NOMBRECOMUNA from comuna")
             result = cursor.fetchall()
         except Exception as ex:
             print(ex)
@@ -52,12 +52,10 @@ class daoComuna:
         sql = "select NUMEROCOMUNA, NOMBRECOMUNA from comuna where NUMEROCOMUNA = %s"
         resultado = None
         c = self.getConex()
-
         try:
             cursor = c.getConex().cursor()
             cursor.execute(sql, (comuna.getIdentificaComunas(),))
             resultado = cursor.fetchone()
-
         except Exception as ex:
             print(traceback.print_exc())
         finally:
@@ -96,7 +94,7 @@ class daoComuna:
             c.getConex().commit()
             filas = cursor.rowcount
             if filas > 0:
-                mensaje ="Datos modificados satisfactoriamente"
+                mensaje ="Comuna eliminada correctamente"
             else:
                 mensaje="No se realizaron cambios"
         except Exception as ex:
