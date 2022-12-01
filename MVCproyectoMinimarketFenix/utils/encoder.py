@@ -13,6 +13,3 @@ class Encoder:
             return True
         else:
             return False
-
-if __name__ == '__main__':
-    print(Encoder().encode("666"))

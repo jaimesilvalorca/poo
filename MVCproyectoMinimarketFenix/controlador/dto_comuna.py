@@ -3,34 +3,34 @@ from dao.dao_comuna import daoComuna
 
 class ComunaDTO:
 
-    def agregarComuna(self, identificaComuna, descripcionComuna):
+    def addComuna(self, identificaComuna, descripcionComuna):
         daocomuna = daoComuna()
         ciudad = Comuna(identificaComuna=identificaComuna, descripcionComuna=descripcionComuna)      
-        resultado = daocomuna.agregarComuna(ciudad)
+        resultado = daocomuna.addComuna(ciudad)
         return resultado
         
-    def listarComunas(self):
+    def findAllComunas(self):
         daocomuna = daoComuna()
-        resultado = daocomuna.listarComuna()
+        resultado = daocomuna.findAllComuna()
         __listaComunas = [] 
         if resultado is not None:
             for c in resultado:          
                 __listaComunas.append(Comuna(identificaComuna=c[0], descripcionComuna=c[1]))  
         return __listaComunas
     
-    def buscarComuna(self, identificaComuna):
+    def findComuna(self, identificaComuna):
         daocomuna = daoComuna()
-        resultado = daocomuna.buscarComuna(Comuna(identificaComuna=identificaComuna))
+        resultado = daocomuna.findComuna(Comuna(identificaComuna=identificaComuna))
         return Comuna(resultado[0], resultado[1]) if resultado is not None else None
     
-    def actualizarComuna(self,numeroComuna, descripcionComuna):
+    def updateComuna(self,numeroComuna, descripcionComuna):
         daocomuna = daoComuna()
-        resultado = daocomuna.actualizarComuna(numeroComuna,Comuna(identificaComuna=0, descripcionComuna=descripcionComuna))
+        resultado = daocomuna.updateComuna(numeroComuna,Comuna(identificaComuna=0, descripcionComuna=descripcionComuna))
         return resultado
     
-    def eliminarComuna(self,identificaComuna):
+    def delComuna(self,identificaComuna):
         daocomuna = daoComuna()
-        resultado = daocomuna.eliminarComuna(Comuna(identificaComuna=identificaComuna))
+        resultado = daocomuna.delComuna(Comuna(identificaComuna=identificaComuna))
         return resultado
 
 

@@ -9,8 +9,6 @@ class Conex:
                                              passwd=passwd, \
                                              database=database)
 
-                    
-
         except Exception as ex:
             print(ex)
             self.__myconn.rollback()

@@ -3,7 +3,8 @@ from modelo.comuna import Comuna
 from modelo.cargo import Cargo
 
 intentos = 1
-print("Sistema POO")
+print("Sistema POO3")
+print("Evaluación sumativa 3")
 while intentos <= 3:
     try:
         resu = validarLogin()

@@ -11,7 +11,7 @@ class daoCargo:
     def getConex(self):
         return self.conn
 
-    def agregarCargo(self,cargo):
+    def addCargo(self,cargo):
         sql = "insert into cargo (NUMEROCARGO, NOMBRECARGO) values (%s,%s)"
         c = self.getConex()
         mensaje = ""
@@ -32,7 +32,7 @@ class daoCargo:
                 c.closeConex()
         return mensaje
 
-    def listarCargo(self):
+    def findAllCargo(self):
         c = self.getConex()
         result = None
         try:
@@ -47,7 +47,7 @@ class daoCargo:
 
         return result
     
-    def buscarCargo(self, cargo):
+    def findCargo(self, cargo):
         sql = "select NUMEROCARGO, NOMBRECARGO from cargo where NUMEROCARGO = %s"
         resultado = None
         c = self.getConex()
@@ -64,7 +64,7 @@ class daoCargo:
                 c.closeConex()
         return resultado
 
-    def actualizarCargo(self, numeroCargo,cargo):
+    def updateCargo(self, numeroCargo,cargo):
         sql = "update cargo set NOMBRECARGO = %s where NUMEROCARGO = %s"
         c = self.getConex()
         mensaje = ""
@@ -85,7 +85,7 @@ class daoCargo:
                 c.closeConex()
         return mensaje
 
-    def eliminarCargo(self,cargo):
+    def delCargo(self,cargo):
         sql = "delete from cargo where NUMEROCARGO=%s"
         c = self.getConex()
         mensaje = ""

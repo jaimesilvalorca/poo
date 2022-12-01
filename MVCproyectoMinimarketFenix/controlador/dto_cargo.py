@@ -3,32 +3,32 @@ from dao.dao_cargo import daoCargo
 
 class CargoDTO:
 
-    def agregarCargo(self, identificaCargo, descripcionCargo):
+    def addCargo(self, identificaCargo, descripcionCargo):
         daocargo = daoCargo()
         cargo = Cargo(identificaCargo=identificaCargo, descripcionCargo=descripcionCargo)      
-        resultado = daocargo.agregarCargo(cargo)
+        resultado = daocargo.addCargo(cargo)
         return resultado        
 
-    def listarCargos(self):
+    def findAllCargos(self):
         daocargo = daoCargo()
-        resultado = daocargo.listarCargo()
+        resultado = daocargo.findAllCargo()
         __listaCargos = [] 
         if resultado is not None:
             for c in resultado:          
                 __listaCargos.append(Cargo(identificaCargo=c[0], descripcionCargo=c[1]))  
         return __listaCargos
     
-    def buscarCargo(self, identificaCargo):
+    def findCargo(self, identificaCargo):
         daocargo = daoCargo()
-        resultado = daocargo.buscarCargo(Cargo(identificaCargo=identificaCargo))
+        resultado = daocargo.findCargo(Cargo(identificaCargo=identificaCargo))
         return Cargo(resultado[0], resultado[1]) if resultado is not None else None
     
-    def actualizarCargo(self,numeroCargo, descripcionCargo):
+    def updateCargo(self,numeroCargo, descripcionCargo):
         daocargo = daoCargo()
-        resultado = daocargo.actualizarCargo(numeroCargo,Cargo(identificaCargo=0, descripcionCargo=descripcionCargo))
+        resultado = daocargo.updateCargo(numeroCargo,Cargo(identificaCargo=0, descripcionCargo=descripcionCargo))
         return resultado
     
-    def eliminarCargo(self,identificaCargo):
+    def delCargo(self,identificaCargo):
         daocargo = daoCargo()
-        resultado = daocargo.eliminarCargo(Cargo(identificaCargo=identificaCargo))
+        resultado = daocargo.delCargo(Cargo(identificaCargo=identificaCargo))
         return resultado

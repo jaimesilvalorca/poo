@@ -11,7 +11,7 @@ class daoComuna:
     def getConex(self):
         return self.conn
 
-    def agregarComuna(self,comuna):
+    def addComuna(self,comuna):
         sql = "insert into comuna (NUMEROCOMUNA, NOMBRECOMUNA) values (%s,%s)"
         c = self.getConex()
         mensaje = ""
@@ -33,7 +33,7 @@ class daoComuna:
         return mensaje
         
 
-    def listarComuna(self):
+    def findAllComuna(self):
         c = self.getConex()
         result = None
         try:
@@ -48,7 +48,7 @@ class daoComuna:
 
         return result
     
-    def buscarComuna(self, comuna):
+    def findComuna(self, comuna):
         sql = "select NUMEROCOMUNA, NOMBRECOMUNA from comuna where NUMEROCOMUNA = %s"
         resultado = None
         c = self.getConex()
@@ -63,7 +63,7 @@ class daoComuna:
                 c.closeConex()
         return resultado
 
-    def actualizarComuna(self, numeroComuna,comuna):
+    def updateComuna(self, numeroComuna,comuna):
         sql = "update comuna set NOMBRECOMUNA = %s where NUMEROCOMUNA = %s"
         c = self.getConex()
         mensaje = ""
@@ -84,7 +84,7 @@ class daoComuna:
                 c.closeConex()
         return mensaje
 
-    def eliminarComuna(self,comuna):
+    def delComuna(self,comuna):
         sql = "delete from comuna where NUMEROCOMUNA=%s"
         c = self.getConex()
         mensaje = ""
